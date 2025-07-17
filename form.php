@@ -20,19 +20,22 @@
 
     require_once "connect2.php";
 
+    //accepting form input while validating and sanitizing 
     $name =$conn->real_escape_string($_POST['name']);
     $class =$conn->real_escape_string($_POST['class']);
     $subject =$conn->real_escape_string($_POST['subject']);
     $marks =$conn->real_escape_string($_POST['marks']);
 
+    //inserting into the database 
     $sql = "INSERT INTO performance (name, class, subject, marks) VALUES ('$name', '$class', '$subject', '$marks')";
 
+    //checking if insertion has worked 
     if ($conn->query($sql) === TRUE){
         echo "<p style='color: green;'>Results Added Successfully</p>";
     } else {
         echo "<p style='color: red;'>Error: " . $conn->error . "</p>";
     }
-
+    //closing the connection 
     $conn->close();
 
     ?>
