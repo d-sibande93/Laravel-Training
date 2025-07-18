@@ -35,6 +35,8 @@ class Learners {
         $sql = "SELECT * FROM performance";
         $result =$conn->query($sql);
 
+        //The code below is checking if there result is displaying information, 
+        // if there is a result more than 0, it should fetch information from the learners according to its variables 
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $learners[] = new learners(
